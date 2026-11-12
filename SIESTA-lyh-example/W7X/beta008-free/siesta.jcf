@@ -1,0 +1,29 @@
+! Calibrated 0.8 percent W7-X EIM seed; free SIESTA boundary.
+&SIESTA_INFO
+  WOUT_FILE = 'wout_w7x_beta008.nc'
+  RESTART_EXT = 'w7x_beta008_free'
+  LRESTART = F
+  L_VESSEL = T
+  MGRID_FILE = 'mgrid_w7x_bmw.nc'
+  VESSEL_FILE = 'vessel_w7x_eim.dat'
+  LASYM = F
+  NFPIN = 5
+  NSIN = 230
+  NSIN_EXT = 33
+  MPOLIN = 10
+  NTORIN = 6
+  NTOR_TYPE = 'dense'
+  NITER = 100
+  FTOL = 1.0E-18
+  LEVMARQ_PARAM = 1.0E-3
+  MUPAR = 0.0
+  NPRECON = 0
+  LRESISTIVE = T
+  ETA_FACTOR = 3.0E-3
+  LADD_PERT = F
+  OMP_THREADS = 1
+  L_OUTPUT_ALLITER = F
+  L_TRACING = F
+  L_SILO_OUTPUT = F
+  NPHIS = 0
+/

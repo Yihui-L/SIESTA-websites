@@ -1,0 +1,759 @@
+{
+  "case": {
+    "id": "high_beta_free",
+    "boundary": "free",
+    "checkpoint": "/root/autodl-tmp/LYH-SIESTA/runs/w7x-example-archive-20261110-205501.ywcih5/beta5-free/siesta_w7x_eim_archive_free_final.nc",
+    "wout": "/root/autodl-tmp/LYH-SIESTA/runs/w7x-example-archive-20261110-205501.ywcih5/beta5-free/wout_EIM_5_c_para.nc",
+    "log": "/root/autodl-tmp/LYH-SIESTA/runs/w7x-example-archive-20261110-205501.ywcih5/beta5-free/run.log"
+  },
+  "files": {
+    "/root/autodl-tmp/LYH-SIESTA/runs/w7x-example-archive-20261110-205501.ywcih5/beta5-free/siesta_w7x_eim_archive_free_final.nc": "5ec6aa7b1835253cf07cff21f51ae04617ce8a759844c2bfcec1d7c3ec459775",
+    "/root/autodl-tmp/LYH-SIESTA/runs/w7x-example-archive-20261110-205501.ywcih5/beta5-free/wout_EIM_5_c_para.nc": "63ca2b3fd80bb8bcfa21b2bc024d324cd66331de281dfa19a5ff8d9591f5c09e",
+    "/root/autodl-tmp/LYH-SIESTA/runs/w7x-example-archive-20261110-205501.ywcih5/beta5-free/run.log": "898f5afbd2e1acd20e0a96a6fbb2a05d6697c02f0af46e2fb9b7953de23184e3",
+    "/root/autodl-tmp/LYH-SIESTA/runs/w7x-fourcase-diagnostics-20261111.04uTOJ/generate_diagnostics.py": "e4eb5a5693bfbe6ff4aefc32f11a48e6cace39a388ecab625bbc528fe2998751",
+    "/root/autodl-tmp/LYH-SIESTA/runs/w7x-fourcase-diagnostics-20261111.04uTOJ/compare_initial_final.py": "410e820a46d14c9943fb4ca55220e350ef51f29f23c3bf528042f790338c1fd5",
+    "/root/autodl-tmp/LYH-SIESTA/runs/w7x-fourcase-diagnostics-20261111.04uTOJ/trace_rk4.c": "c2a6c0fc88021139ca390e6fc58d0c43d2dd4bbd8270f7e110448b2450d953e2"
+  },
+  "checkpoint": {
+    "iteration": 100,
+    "role": "final",
+    "reason": "iteration_limit",
+    "fsq": 4.177912335655349e-06,
+    "wb": 1.3277387470075297,
+    "wp": 0.04966454312599096,
+    "wtotal": 1.402235561696516,
+    "p_min": -0.0,
+    "p_max": 230410.40003350787,
+    "b_factor": 0.1008083147702626,
+    "p_factor": 0.010162316326820344
+  },
+  "grid": {
+    "nrad": 263,
+    "plasma_nrad": 230,
+    "mpol": 10,
+    "ntor": 6,
+    "nfp": 5
+  },
+  "planes_deg": [
+    0.0,
+    18.0,
+    36.0
+  ],
+  "beta": {
+    "volume_average_local_beta": 0.05127301728063638,
+    "vmec_betatotal": 0.04966432439616247,
+    "iota_axis": 0.8772128893250772,
+    "iota_lcfs": 0.9660390612026238
+  },
+  "units": {
+    "pressure": "Pa (plots kPa)",
+    "current_density": "A/m2 (plots kA/m2)",
+    "R_Z": "m",
+    "phi": "rad in arrays, degrees in plots",
+    "fsq": "SIESTA internal normalized quadratic residual",
+    "force_density": "N/m3"
+  },
+  "pressure_definition": "synthesis(jpresch * Fourier_orth)/(p_factor*mu0*synthesis(jmnc)); no p clipping",
+  "current_definition": "saved sqrt(g)*curl(B) on full mesh / (mu0*solver filtered full Jacobian), transformed to cylindrical basis; no b_factor rescaling",
+  "force_definition": "Independent SI J cross B minus grad p on full nodes with adjacent half nodes; centered weighted Q/J gradient, solver filtered Jacobian, cylindrical metric; not the variational F2(MHD) stencil; no artificial floor",
+  "geometry_note": "VMEC LCFS and magnetic axis are references; computational boundary is fixed outer coordinate surface, not evolved plasma edge",
+  "lcfs_projection_difference_max_m": [
+    0.0027324100018533324,
+    0.003009741592555338,
+    0.006542488121912271
+  ],
+  "pressure_grid_validation": {
+    "1x": {
+      "min_Pa": -0.0,
+      "max_Pa": 230410.40003350782,
+      "negative_samples": 0,
+      "sample_count": 109516,
+      "angular_shape": [
+        19,
+        22
+      ],
+      "min_location": {
+        "rho": 1.002183406113537,
+        "theta_deg": 0.0,
+        "phi_deg": 0.0
+      },
+      "radial_sampling": "native half mesh"
+    },
+    "8x": {
+      "min_Pa": -0.0,
+      "max_Pa": 230410.40003350782,
+      "negative_samples": 0,
+      "sample_count": 6686240,
+      "angular_shape": [
+        145,
+        176
+      ],
+      "min_location": {
+        "rho": 1.002183406113537,
+        "theta_deg": 0.0,
+        "phi_deg": 0.0
+      },
+      "radial_sampling": "native half mesh"
+    }
+  },
+  "force_history": {
+    "source": "screen NITER / F2(MHD) table; not GMRES or line-search trial residuals",
+    "eta_factor": 0.003,
+    "resistive_run": true,
+    "records": 100,
+    "first_niter": 1,
+    "last_niter": 100,
+    "initial_F2_MHD": 7.127e-07,
+    "last_printed_F2_MHD": 4.085e-06,
+    "terminal_checkpoint_fsq": 4.177912335655349e-06,
+    "last_row_relative_difference": 0.02223893853933033,
+    "terminal_matches_last_post_kick": true,
+    "resistivity_disabled_at_screen_niter": null,
+    "resistive_jumps": [
+      {
+        "niter": 3,
+        "before": 6.211e-07,
+        "after": 6.133e-07,
+        "log_line": 775
+      },
+      {
+        "niter": 4,
+        "before": 6.054e-07,
+        "after": 5.974e-07,
+        "log_line": 1005
+      },
+      {
+        "niter": 5,
+        "before": 5.942e-07,
+        "after": 5.858e-07,
+        "log_line": 1232
+      },
+      {
+        "niter": 6,
+        "before": 5.838e-07,
+        "after": 5.75e-07,
+        "log_line": 1461
+      },
+      {
+        "niter": 7,
+        "before": 5.736e-07,
+        "after": 5.645e-07,
+        "log_line": 1689
+      },
+      {
+        "niter": 8,
+        "before": 5.633e-07,
+        "after": 5.538e-07,
+        "log_line": 1918
+      },
+      {
+        "niter": 9,
+        "before": 5.527e-07,
+        "after": 5.43e-07,
+        "log_line": 2146
+      },
+      {
+        "niter": 10,
+        "before": 5.419e-07,
+        "after": 5.319e-07,
+        "log_line": 2375
+      },
+      {
+        "niter": 11,
+        "before": 5.31e-07,
+        "after": 5.208e-07,
+        "log_line": 2603
+      },
+      {
+        "niter": 12,
+        "before": 5.199e-07,
+        "after": 5.097e-07,
+        "log_line": 2832
+      },
+      {
+        "niter": 13,
+        "before": 5.088e-07,
+        "after": 4.985e-07,
+        "log_line": 3060
+      },
+      {
+        "niter": 14,
+        "before": 4.977e-07,
+        "after": 4.875e-07,
+        "log_line": 3290
+      },
+      {
+        "niter": 15,
+        "before": 4.868e-07,
+        "after": 4.768e-07,
+        "log_line": 3520
+      },
+      {
+        "niter": 16,
+        "before": 4.759e-07,
+        "after": 4.662e-07,
+        "log_line": 3750
+      },
+      {
+        "niter": 17,
+        "before": 4.653e-07,
+        "after": 4.56e-07,
+        "log_line": 3979
+      },
+      {
+        "niter": 18,
+        "before": 4.554e-07,
+        "after": 4.467e-07,
+        "log_line": 4210
+      },
+      {
+        "niter": 19,
+        "before": 4.46e-07,
+        "after": 4.38e-07,
+        "log_line": 4440
+      },
+      {
+        "niter": 20,
+        "before": 4.374e-07,
+        "after": 4.302e-07,
+        "log_line": 4671
+      },
+      {
+        "niter": 21,
+        "before": 4.296e-07,
+        "after": 4.233e-07,
+        "log_line": 4902
+      },
+      {
+        "niter": 22,
+        "before": 4.227e-07,
+        "after": 4.175e-07,
+        "log_line": 5134
+      },
+      {
+        "niter": 23,
+        "before": 4.169e-07,
+        "after": 4.129e-07,
+        "log_line": 5365
+      },
+      {
+        "niter": 24,
+        "before": 4.123e-07,
+        "after": 4.095e-07,
+        "log_line": 5598
+      },
+      {
+        "niter": 25,
+        "before": 4.089e-07,
+        "after": 4.074e-07,
+        "log_line": 5831
+      },
+      {
+        "niter": 26,
+        "before": 4.068e-07,
+        "after": 4.067e-07,
+        "log_line": 6065
+      },
+      {
+        "niter": 27,
+        "before": 4.06e-07,
+        "after": 4.073e-07,
+        "log_line": 6300
+      },
+      {
+        "niter": 28,
+        "before": 4.054e-07,
+        "after": 4.082e-07,
+        "log_line": 6536
+      },
+      {
+        "niter": 29,
+        "before": 4.069e-07,
+        "after": 4.113e-07,
+        "log_line": 6774
+      },
+      {
+        "niter": 30,
+        "before": 4.107e-07,
+        "after": 4.165e-07,
+        "log_line": 6934
+      },
+      {
+        "niter": 31,
+        "before": 4.16e-07,
+        "after": 4.233e-07,
+        "log_line": 7094
+      },
+      {
+        "niter": 32,
+        "before": 4.228e-07,
+        "after": 4.315e-07,
+        "log_line": 7254
+      },
+      {
+        "niter": 33,
+        "before": 4.31e-07,
+        "after": 4.41e-07,
+        "log_line": 7414
+      },
+      {
+        "niter": 34,
+        "before": 4.405e-07,
+        "after": 4.518e-07,
+        "log_line": 7573
+      },
+      {
+        "niter": 35,
+        "before": 4.512e-07,
+        "after": 4.638e-07,
+        "log_line": 7732
+      },
+      {
+        "niter": 36,
+        "before": 4.633e-07,
+        "after": 4.771e-07,
+        "log_line": 7891
+      },
+      {
+        "niter": 37,
+        "before": 4.765e-07,
+        "after": 4.915e-07,
+        "log_line": 8050
+      },
+      {
+        "niter": 38,
+        "before": 4.91e-07,
+        "after": 5.07e-07,
+        "log_line": 8209
+      },
+      {
+        "niter": 39,
+        "before": 5.065e-07,
+        "after": 5.236e-07,
+        "log_line": 8357
+      },
+      {
+        "niter": 40,
+        "before": 5.231e-07,
+        "after": 5.412e-07,
+        "log_line": 8503
+      },
+      {
+        "niter": 41,
+        "before": 5.407e-07,
+        "after": 5.598e-07,
+        "log_line": 8648
+      },
+      {
+        "niter": 42,
+        "before": 5.593e-07,
+        "after": 5.794e-07,
+        "log_line": 8790
+      },
+      {
+        "niter": 43,
+        "before": 5.789e-07,
+        "after": 6e-07,
+        "log_line": 8931
+      },
+      {
+        "niter": 44,
+        "before": 5.995e-07,
+        "after": 6.213e-07,
+        "log_line": 9083
+      },
+      {
+        "niter": 45,
+        "before": 6.209e-07,
+        "after": 6.438e-07,
+        "log_line": 9221
+      },
+      {
+        "niter": 46,
+        "before": 6.433e-07,
+        "after": 6.673e-07,
+        "log_line": 9358
+      },
+      {
+        "niter": 47,
+        "before": 6.669e-07,
+        "after": 6.918e-07,
+        "log_line": 9494
+      },
+      {
+        "niter": 48,
+        "before": 6.913e-07,
+        "after": 7.167e-07,
+        "log_line": 9643
+      },
+      {
+        "niter": 49,
+        "before": 7.162e-07,
+        "after": 7.43e-07,
+        "log_line": 9781
+      },
+      {
+        "niter": 50,
+        "before": 7.425e-07,
+        "after": 7.704e-07,
+        "log_line": 9915
+      },
+      {
+        "niter": 51,
+        "before": 7.699e-07,
+        "after": 7.99e-07,
+        "log_line": 10049
+      },
+      {
+        "niter": 52,
+        "before": 7.986e-07,
+        "after": 8.287e-07,
+        "log_line": 10180
+      },
+      {
+        "niter": 53,
+        "before": 8.282e-07,
+        "after": 8.595e-07,
+        "log_line": 10312
+      },
+      {
+        "niter": 54,
+        "before": 8.591e-07,
+        "after": 8.914e-07,
+        "log_line": 10463
+      },
+      {
+        "niter": 55,
+        "before": 8.91e-07,
+        "after": 9.245e-07,
+        "log_line": 10615
+      },
+      {
+        "niter": 56,
+        "before": 9.241e-07,
+        "after": 9.587e-07,
+        "log_line": 10766
+      },
+      {
+        "niter": 57,
+        "before": 9.584e-07,
+        "after": 9.942e-07,
+        "log_line": 10917
+      },
+      {
+        "niter": 58,
+        "before": 9.938e-07,
+        "after": 1.031e-06,
+        "log_line": 11065
+      },
+      {
+        "niter": 59,
+        "before": 1.03e-06,
+        "after": 1.069e-06,
+        "log_line": 11217
+      },
+      {
+        "niter": 60,
+        "before": 1.066e-06,
+        "after": 1.104e-06,
+        "log_line": 11345
+      },
+      {
+        "niter": 61,
+        "before": 1.102e-06,
+        "after": 1.139e-06,
+        "log_line": 11496
+      },
+      {
+        "niter": 62,
+        "before": 1.138e-06,
+        "after": 1.18e-06,
+        "log_line": 11638
+      },
+      {
+        "niter": 63,
+        "before": 1.179e-06,
+        "after": 1.224e-06,
+        "log_line": 11789
+      },
+      {
+        "niter": 64,
+        "before": 1.223e-06,
+        "after": 1.269e-06,
+        "log_line": 11945
+      },
+      {
+        "niter": 65,
+        "before": 1.269e-06,
+        "after": 1.316e-06,
+        "log_line": 12095
+      },
+      {
+        "niter": 66,
+        "before": 1.315e-06,
+        "after": 1.365e-06,
+        "log_line": 12255
+      },
+      {
+        "niter": 67,
+        "before": 1.363e-06,
+        "after": 1.409e-06,
+        "log_line": 12404
+      },
+      {
+        "niter": 68,
+        "before": 1.408e-06,
+        "after": 1.459e-06,
+        "log_line": 12564
+      },
+      {
+        "niter": 69,
+        "before": 1.459e-06,
+        "after": 1.512e-06,
+        "log_line": 12715
+      },
+      {
+        "niter": 70,
+        "before": 1.512e-06,
+        "after": 1.568e-06,
+        "log_line": 12872
+      },
+      {
+        "niter": 71,
+        "before": 1.568e-06,
+        "after": 1.629e-06,
+        "log_line": 13022
+      },
+      {
+        "niter": 72,
+        "before": 1.629e-06,
+        "after": 1.691e-06,
+        "log_line": 13182
+      },
+      {
+        "niter": 73,
+        "before": 1.691e-06,
+        "after": 1.755e-06,
+        "log_line": 13332
+      },
+      {
+        "niter": 74,
+        "before": 1.755e-06,
+        "after": 1.82e-06,
+        "log_line": 13487
+      },
+      {
+        "niter": 75,
+        "before": 1.82e-06,
+        "after": 1.888e-06,
+        "log_line": 13637
+      },
+      {
+        "niter": 76,
+        "before": 1.888e-06,
+        "after": 1.959e-06,
+        "log_line": 13790
+      },
+      {
+        "niter": 77,
+        "before": 1.959e-06,
+        "after": 2.031e-06,
+        "log_line": 13940
+      },
+      {
+        "niter": 78,
+        "before": 2.031e-06,
+        "after": 2.107e-06,
+        "log_line": 14093
+      },
+      {
+        "niter": 79,
+        "before": 2.107e-06,
+        "after": 2.185e-06,
+        "log_line": 14244
+      },
+      {
+        "niter": 80,
+        "before": 2.184e-06,
+        "after": 2.265e-06,
+        "log_line": 14399
+      },
+      {
+        "niter": 81,
+        "before": 2.265e-06,
+        "after": 2.349e-06,
+        "log_line": 14553
+      },
+      {
+        "niter": 82,
+        "before": 2.349e-06,
+        "after": 2.435e-06,
+        "log_line": 14713
+      },
+      {
+        "niter": 83,
+        "before": 2.435e-06,
+        "after": 2.525e-06,
+        "log_line": 14868
+      },
+      {
+        "niter": 84,
+        "before": 2.525e-06,
+        "after": 2.618e-06,
+        "log_line": 15028
+      },
+      {
+        "niter": 85,
+        "before": 2.618e-06,
+        "after": 2.715e-06,
+        "log_line": 15184
+      },
+      {
+        "niter": 86,
+        "before": 2.715e-06,
+        "after": 2.815e-06,
+        "log_line": 15348
+      },
+      {
+        "niter": 87,
+        "before": 2.815e-06,
+        "after": 2.919e-06,
+        "log_line": 15505
+      },
+      {
+        "niter": 88,
+        "before": 2.919e-06,
+        "after": 3.027e-06,
+        "log_line": 15665
+      },
+      {
+        "niter": 89,
+        "before": 3.027e-06,
+        "after": 3.139e-06,
+        "log_line": 15823
+      },
+      {
+        "niter": 90,
+        "before": 3.139e-06,
+        "after": 3.256e-06,
+        "log_line": 15984
+      },
+      {
+        "niter": 91,
+        "before": 3.256e-06,
+        "after": 3.377e-06,
+        "log_line": 16142
+      },
+      {
+        "niter": 92,
+        "before": 3.377e-06,
+        "after": 3.503e-06,
+        "log_line": 16302
+      },
+      {
+        "niter": 93,
+        "before": 3.503e-06,
+        "after": 3.673e-06,
+        "log_line": 16461
+      },
+      {
+        "niter": 94,
+        "before": 3.634e-06,
+        "after": 3.701e-06,
+        "log_line": 16613
+      },
+      {
+        "niter": 95,
+        "before": 3.701e-06,
+        "after": 3.768e-06,
+        "log_line": 16763
+      },
+      {
+        "niter": 96,
+        "before": 3.768e-06,
+        "after": 3.84e-06,
+        "log_line": 16917
+      },
+      {
+        "niter": 97,
+        "before": 3.839e-06,
+        "after": 3.916e-06,
+        "log_line": 17069
+      },
+      {
+        "niter": 98,
+        "before": 3.916e-06,
+        "after": 3.998e-06,
+        "log_line": 17224
+      },
+      {
+        "niter": 99,
+        "before": 3.998e-06,
+        "after": 4.085e-06,
+        "log_line": 17377
+      },
+      {
+        "niter": 100,
+        "before": 4.085e-06,
+        "after": 4.178e-06,
+        "log_line": 17532
+      }
+    ],
+    "stage_note": "Rows precede that row's optional resistive kick; jumps are recorded separately.",
+    "normalization": "SIESTA internal normalized quadratic residual, unchanged from checkpoint fsq; not SI force density squared and not certified identical to a paper's threshold."
+  },
+  "sections": {
+    "pressure": {
+      "sampled_min": -0.0,
+      "sampled_max": 230.4104000335078,
+      "display_unit": "kPa"
+    },
+    "current": {
+      "sampled_min": 0.0015247576985029493,
+      "sampled_max": 7573.635182659412,
+      "display_unit": "kA/m2"
+    },
+    "force_density": {
+      "sampled_min": 0.3676789307827306,
+      "sampled_max": 2463396.6557578403,
+      "display_unit": "N/m3"
+    }
+  },
+  "tracing": {
+    "weighted_div_h_relative_max": 9.71239641282445e-14,
+    "weighted_Bphi_sample_range": [
+      0.0014899880056027696,
+      1.5707427390609505
+    ],
+    "steps_per_field_period": 256,
+    "step_halving_rz_error_m": {
+      "median": 3.391335840860192e-09,
+      "p99": 9.736298236114739e-07,
+      "max": 6.577481841927874e-05,
+      "matched_crossings": 3154
+    },
+    "stop_counts": {
+      "0": 111,
+      "2": 176
+    },
+    "crossings_per_plane": [
+      44196,
+      44145,
+      44108
+    ],
+    "seeds": 287,
+    "max_field_periods": 350,
+    "stop_codes": {
+      "0": "full length",
+      "1": "inner half-grid edge",
+      "2": "outer half-grid edge",
+      "3": "toroidal component sign/zero failure",
+      "4": "nonfinite"
+    },
+    "interpolation": "divergence-compatible weighted flux: linear tangential and integrated quadratic radial between half nodes",
+    "valid_domain": [
+      0.002183406113537118,
+      1.1419213973799127
+    ]
+  }
+}

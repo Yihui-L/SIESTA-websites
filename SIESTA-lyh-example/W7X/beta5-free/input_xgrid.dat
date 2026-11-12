@@ -1,0 +1,13 @@
+&MGRID_NLI
+  TASK = 'MGRID'
+  MGRID_EXT = 'w7x'
+  MGRID_MODE = 'S'
+  LSTELL_SYM = T
+  RMIN = 4.00
+  RMAX = 6.80
+  ZMIN = -1.48
+  ZMAX = 1.48
+  IR = 81
+  JZ = 81
+  KP = 36
+/

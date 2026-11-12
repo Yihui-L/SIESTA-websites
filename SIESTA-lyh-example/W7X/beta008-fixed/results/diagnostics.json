@@ -1,0 +1,170 @@
+{
+  "case": {
+    "id": "low_beta_fixed",
+    "boundary": "fixed",
+    "checkpoint": "/root/autodl-tmp/LYH-SIESTA/runs/w7x-example-archive-20261110-205501.ywcih5/beta008-fixed/siesta_w7x_beta008_fixed_final.nc",
+    "wout": "/root/autodl-tmp/LYH-SIESTA/runs/w7x-example-archive-20261110-205501.ywcih5/beta008-fixed/wout_w7x_beta008.nc",
+    "log": "/root/autodl-tmp/LYH-SIESTA/runs/w7x-example-archive-20261110-205501.ywcih5/beta008-fixed/run.log"
+  },
+  "files": {
+    "/root/autodl-tmp/LYH-SIESTA/runs/w7x-example-archive-20261110-205501.ywcih5/beta008-fixed/siesta_w7x_beta008_fixed_final.nc": "a1279bf55d6fa80188fe17d2bd6daea9e5f99a18ddfa3572c790b7cdad9fae5e",
+    "/root/autodl-tmp/LYH-SIESTA/runs/w7x-example-archive-20261110-205501.ywcih5/beta008-fixed/wout_w7x_beta008.nc": "5bc9c949994df4c2fa4d5eea725e3a596675d1f3ce06a04f092951662d0de34d",
+    "/root/autodl-tmp/LYH-SIESTA/runs/w7x-example-archive-20261110-205501.ywcih5/beta008-fixed/run.log": "63c155c8b5d91a8b9b9cb84b6a54348fa2bd41796e50b5193add1da4879c8391",
+    "/root/autodl-tmp/LYH-SIESTA/runs/w7x-fourcase-diagnostics-20261111.04uTOJ/generate_diagnostics.py": "e4eb5a5693bfbe6ff4aefc32f11a48e6cace39a388ecab625bbc528fe2998751",
+    "/root/autodl-tmp/LYH-SIESTA/runs/w7x-fourcase-diagnostics-20261111.04uTOJ/compare_initial_final.py": "410e820a46d14c9943fb4ca55220e350ef51f29f23c3bf528042f790338c1fd5",
+    "/root/autodl-tmp/LYH-SIESTA/runs/w7x-fourcase-diagnostics-20261111.04uTOJ/trace_rk4.c": "c2a6c0fc88021139ca390e6fc58d0c43d2dd4bbd8270f7e110448b2450d953e2"
+  },
+  "checkpoint": {
+    "iteration": 100,
+    "role": "final",
+    "reason": "iteration_limit",
+    "fsq": 2.1403428756763396e-11,
+    "wb": 0.9999616842596258,
+    "wp": 0.007878471967601965,
+    "wtotal": 1.0117793922110287,
+    "p_min": 6.909049468816811e-06,
+    "p_max": 53391.32583516283,
+    "b_factor": 0.09980917488044173,
+    "p_factor": 0.009961871390314602
+  },
+  "grid": {
+    "nrad": 49,
+    "plasma_nrad": 49,
+    "mpol": 10,
+    "ntor": 6,
+    "nfp": 5
+  },
+  "planes_deg": [
+    0.0,
+    18.0,
+    36.0
+  ],
+  "beta": {
+    "volume_average_local_beta": 0.007999911819669626,
+    "vmec_betatotal": 0.007878019442519922,
+    "iota_axis": 0.8579283270974648,
+    "iota_lcfs": 0.9876255009606262
+  },
+  "units": {
+    "pressure": "Pa (plots kPa)",
+    "current_density": "A/m2 (plots kA/m2)",
+    "R_Z": "m",
+    "phi": "rad in arrays, degrees in plots",
+    "fsq": "SIESTA internal normalized quadratic residual",
+    "force_density": "N/m3"
+  },
+  "pressure_definition": "synthesis(jpresch * Fourier_orth)/(p_factor*mu0*synthesis(jmnc)); no p clipping",
+  "current_definition": "saved sqrt(g)*curl(B) on full mesh / (mu0*solver filtered full Jacobian), transformed to cylindrical basis; no b_factor rescaling",
+  "force_definition": "Independent SI J cross B minus grad p on full nodes with adjacent half nodes; centered weighted Q/J gradient, solver filtered Jacobian, cylindrical metric; not the variational F2(MHD) stencil; no artificial floor",
+  "geometry_note": "VMEC LCFS and magnetic axis are references; computational boundary is fixed outer coordinate surface, not evolved plasma edge",
+  "lcfs_projection_difference_max_m": [
+    0.0021049206962399764,
+    0.0025306948729818504,
+    0.0017286479887259367
+  ],
+  "pressure_grid_validation": {
+    "1x": {
+      "min_Pa": 6.909052236138424e-06,
+      "max_Pa": 53391.32583516282,
+      "negative_samples": 0,
+      "sample_count": 20064,
+      "angular_shape": [
+        19,
+        22
+      ],
+      "min_location": {
+        "rho": 0.9895833333333334,
+        "theta_deg": 160.0,
+        "phi_deg": 19.636363636363637
+      },
+      "radial_sampling": "native half mesh"
+    },
+    "8x": {
+      "min_Pa": -85.48894652813445,
+      "max_Pa": 54983.61340344917,
+      "negative_samples": 77,
+      "sample_count": 1224960,
+      "angular_shape": [
+        145,
+        176
+      ],
+      "min_location": {
+        "rho": 0.9895833333333334,
+        "theta_deg": 167.5,
+        "phi_deg": 20.863636363636363
+      },
+      "radial_sampling": "native half mesh"
+    }
+  },
+  "force_history": {
+    "source": "screen NITER / F2(MHD) table; not GMRES or line-search trial residuals",
+    "eta_factor": 0.01,
+    "resistive_run": false,
+    "records": 100,
+    "first_niter": 1,
+    "last_niter": 100,
+    "initial_F2_MHD": 5.086e-07,
+    "last_printed_F2_MHD": 2.14e-11,
+    "terminal_checkpoint_fsq": 2.1403428756763396e-11,
+    "last_row_relative_difference": 0.00016019661159727845,
+    "terminal_matches_last_post_kick": false,
+    "resistivity_disabled_at_screen_niter": null,
+    "resistive_jumps": [],
+    "stage_note": "Rows precede that row's optional resistive kick; jumps are recorded separately.",
+    "normalization": "SIESTA internal normalized quadratic residual, unchanged from checkpoint fsq; not SI force density squared and not certified identical to a paper's threshold."
+  },
+  "sections": {
+    "pressure": {
+      "sampled_min": 0.17965291285848195,
+      "sampled_max": 53.39132583516279,
+      "display_unit": "kPa"
+    },
+    "current": {
+      "sampled_min": 0.4854426496493915,
+      "sampled_max": 15786.94546302493,
+      "display_unit": "kA/m2"
+    },
+    "force_density": {
+      "sampled_min": 13.71895974094606,
+      "sampled_max": 1566193.641555304,
+      "display_unit": "N/m3"
+    }
+  },
+  "tracing": {
+    "weighted_div_h_relative_max": 8.692911006004931e-15,
+    "weighted_Bphi_sample_range": [
+      0.007198353699852035,
+      1.0340638072414907
+    ],
+    "steps_per_field_period": 256,
+    "step_halving_rz_error_m": {
+      "median": 1.720489541927755e-09,
+      "p99": 1.7409076544084296e-08,
+      "max": 4.916495705454287e-07,
+      "matched_crossings": 3444
+    },
+    "stop_counts": {
+      "1": 2,
+      "0": 285
+    },
+    "crossings_per_plane": [
+      99768,
+      99768,
+      99768
+    ],
+    "seeds": 287,
+    "max_field_periods": 350,
+    "stop_codes": {
+      "0": "full length",
+      "1": "inner half-grid edge",
+      "2": "outer half-grid edge",
+      "3": "toroidal component sign/zero failure",
+      "4": "nonfinite"
+    },
+    "interpolation": "divergence-compatible weighted flux: linear tangential and integrated quadratic radial between half nodes",
+    "valid_domain": [
+      0.010416666666666666,
+      0.9895833333333334
+    ]
+  }
+}

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SIESTA-lyh 的四组 W7-X EIM 平衡算例、庞加莱截面、输入及结果文件。">
+  <meta name="theme-color" content="#f5f7f6">
+  <title>W7-X EIM 算例 | SIESTA-lyh</title>
+  <style>
+    :root {
+      --paper: #f5f7f6; --white: #fff; --ink: #183338;
+      --body: #425a60; --line: #cddad8; --link: #145d64;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; color: var(--ink); background: var(--paper);
+      font: 15px/1.7 Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    }
+    a { color: var(--link); text-underline-offset: .18em; }
+    a:hover { text-decoration-thickness: 2px; }
+    :focus-visible { outline: 3px solid #13707c; outline-offset: 4px; }
+    .inner { width: min(100% - 48px, 1180px); margin-inline: auto; }
+    .skip { position: absolute; inset: 10px auto auto 12px; z-index: 1; transform: translateY(-200%); background: #fff; padding: 6px 12px; }
+    .skip:focus { transform: none; }
+    header, footer { background: var(--white); }
+    header { border-bottom: 1px solid var(--line); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 60px; gap: 20px; }
+    .wordmark { font-weight: 700; color: var(--ink); text-decoration: none; }
+    nav { display: flex; gap: 20px; font-size: 13px; }
+    nav a { text-decoration: none; font-weight: 600; }
+    section { padding: 32px 0 38px; border-bottom: 1px solid var(--line); }
+    section:nth-child(odd) { background: var(--white); }
+    h1, h2, h3, h4, p { margin: 0; }
+    h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.2; letter-spacing: -.025em; }
+    h2 { font-size: 25px; line-height: 1.35; }
+    h3 { font-size: 19px; }
+    h4 { margin-top: 14px; font-size: 14px; }
+    .lead { max-width: 82ch; margin: 11px 0 20px; color: var(--body); }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+    th, td { padding: 9px 13px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+    thead { background: #edf3f2; }
+    tbody th { font-weight: 600; }
+    .figures, .cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px; }
+    figure { min-width: 0; margin: 0; padding: 9px 0 0; border-top: 1px solid var(--line); }
+    figcaption { margin-bottom: 7px; font-weight: 650; }
+    figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: var(--white); }
+    .case { min-width: 0; border-top: 1px solid var(--line); padding: 16px 0 7px; scroll-margin-top: 14px; }
+    .case-readme { font-size: 13px; }
+    ul { display: flex; flex-wrap: wrap; gap: 2px 17px; list-style: none; padding: 0; margin: 4px 0 0; font-size: 14px; }
+    li { padding-block: 2px; }
+    footer .inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; padding-block: 21px; font-size: 13px; }
+    @media (max-width: 680px) {
+      .inner { width: calc(100% - 34px); }
+      .header-inner { min-height: 60px; gap: 8px; }
+      nav { gap: 10px; }
+      section { padding: 25px 0 30px; }
+      .figures, .cases { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#overview">跳转到算例</a>
+  <header>
+    <div class="inner header-inner">
+      <a class="wordmark" href="../Source-Code/">SIESTA-lyh</a>
+      <nav aria-label="页面导航">
+        <a href="#poincare">庞加莱截面</a><a href="#files">输入与结果</a><a href="../Source-Code/">程序手册</a>
+      </nav>
+    </div>
+  </header>
+  <main id="overview">
+    <section>
+      <div class="inner">
+        <h1>W7-X EIM 平衡算例</h1>
+        <p class="lead">0.8% 与约 5% 两组 β 各有固定边界和自由边界算例。表中 β 为输入 VMEC 平衡的体积平均局域值。四组均使用 M = 10、N = 6，在第 100 步达到迭代上限时保存终态。</p>
+        <div class="table-wrap" role="region" aria-label="算例和力残差" tabindex="0">
+          <table>
+            <thead><tr><th scope="col">算例</th><th scope="col">输入 VMEC β</th><th scope="col">径向点</th><th scope="col">迭代步数</th><th scope="col">终态 F²</th></tr></thead>
+            <tbody>
+          <tr>
+            <th scope="row"><a href="#beta008-fixed">0.8% 固定边界</a></th>
+            <td>0.79999%</td><td>49</td><td>100</td><td>2.140343×10⁻¹¹</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="#beta008-free">0.8% 自由边界</a></th>
+            <td>0.79999%</td><td>230 + 33</td><td>100</td><td>2.066690×10⁻⁷</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="#beta5-fixed">约 5% 固定边界</a></th>
+            <td>5.12730%</td><td>99</td><td>100</td><td>8.462638×10⁻¹⁰</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="#beta5-free">约 5% 自由边界</a></th>
+            <td>5.12730%</td><td>230 + 33</td><td>100</td><td>4.177912×10⁻⁶</td>
+          </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section id="poincare">
+      <div class="inner">
+        <h2>庞加莱截面</h2>
+        <p class="lead">图中给出终态磁场在 φ = 0°、18°、36° 的场线交点。VMEC LCFS 和磁轴作为几何参照，虚线表示各自的计算边界。点击图像查看原图。</p>
+        <div class="figures">
+        <figure>
+          <figcaption><a href="#beta008-fixed">0.8% 固定边界</a></figcaption>
+          <a href="./W7X/beta008-fixed/figures/poincare.png"><img src="./W7X/beta008-fixed/figures/poincare.png" alt="W7-X EIM 0.8% 固定边界算例的庞加莱截面" loading="lazy" decoding="async"></a>
+        </figure>
+        <figure>
+          <figcaption><a href="#beta008-free">0.8% 自由边界</a></figcaption>
+          <a href="./W7X/beta008-free/figures/poincare.png"><img src="./W7X/beta008-free/figures/poincare.png" alt="W7-X EIM 0.8% 自由边界算例的庞加莱截面" loading="lazy" decoding="async"></a>
+        </figure>
+        <figure>
+          <figcaption><a href="#beta5-fixed">约 5% 固定边界</a></figcaption>
+          <a href="./W7X/beta5-fixed/figures/poincare.png"><img src="./W7X/beta5-fixed/figures/poincare.png" alt="W7-X EIM 约 5% 固定边界算例的庞加莱截面" loading="lazy" decoding="async"></a>
+        </figure>
+        <figure>
+          <figcaption><a href="#beta5-free">约 5% 自由边界</a></figcaption>
+          <a href="./W7X/beta5-free/figures/poincare.png"><img src="./W7X/beta5-free/figures/poincare.png" alt="W7-X EIM 约 5% 自由边界算例的庞加莱截面" loading="lazy" decoding="async"></a>
+        </figure>
+        </div>
+      </div>
+    </section>
+    <section id="files">
+      <div class="inner">
+        <h2>输入与结果</h2>
+        <p class="lead">固定边界直接读取随附的 VMEC WOUT。自由边界另用 MAKEGRID 生成线圈网格，并用随附脚本对齐 WOUT 的磁场方向。各算例附运行命令和终态诊断。</p>
+        <div class="cases">
+        <article class="case" id="beta008-fixed">
+          <h3>0.8% 固定边界</h3>
+          <a class="case-readme" href="./W7X/beta008-fixed/README.md">算例与运行命令</a>
+          <h4>输入</h4>
+          <ul>
+            <li><a href="./W7X/beta008-fixed/siesta.jcf">SIESTA 输入</a></li>
+            <li><a href="./W7X/beta008-fixed/input.w7x_beta008">VMEC 输入</a></li>
+            <li><a href="./W7X/beta008-fixed/wout_w7x_beta008.nc">VMEC WOUT</a></li>
+            <li><a href="./W7X/beta008-fixed/coils.w7x">线圈数据</a></li>
+          </ul>
+          <h4>结果文件</h4>
+          <ul>
+            <li><a href="./W7X/beta008-fixed/results/siesta_w7x_beta008_fixed_final.nc">终态 NetCDF</a></li>
+            <li><a href="./W7X/beta008-fixed/results/siesta_w7x_beta008_fixed.nc">最佳理想步 NetCDF</a></li>
+            <li><a href="./W7X/beta008-fixed/results/run.log">运行日志</a></li>
+            <li><a href="./W7X/beta008-fixed/results/siesta_profiles.txt">SIESTA 剖面</a></li>
+            <li><a href="./W7X/beta008-fixed/results/siesta_profiles_pest.txt">PEST 剖面</a></li>
+            <li><a href="./W7X/beta008-fixed/results/force_history.csv">残差 CSV</a></li>
+            <li><a href="./W7X/beta008-fixed/results/diagnostics.json">诊断 JSON</a></li>
+            <li><a href="./W7X/beta008-fixed/SHA256SUMS">SHA-256 清单</a></li>
+          </ul>
+          <h4>诊断图</h4>
+          <ul>
+            <li><a href="./W7X/beta008-fixed/figures/force_history.png">力残差历史</a></li>
+            <li><a href="./W7X/beta008-fixed/figures/pressure.png">压力分布</a></li>
+            <li><a href="./W7X/beta008-fixed/figures/current.png">电流分布</a></li>
+            <li><a href="./W7X/beta008-fixed/figures/force_density.png">力密度分布</a></li>
+          </ul>
+        </article>
+        <article class="case" id="beta008-free">
+          <h3>0.8% 自由边界</h3>
+          <a class="case-readme" href="./W7X/beta008-free/README.md">算例与运行命令</a>
+          <h4>输入</h4>
+          <ul>
+            <li><a href="./W7X/beta008-free/siesta.jcf">SIESTA 输入</a></li>
+            <li><a href="./W7X/beta008-free/input.w7x_beta008">VMEC 输入</a></li>
+            <li><a href="./W7X/beta008-free/wout_w7x_beta008.nc">VMEC WOUT</a></li>
+            <li><a href="./W7X/beta008-free/coils.w7x">线圈数据</a></li>
+            <li><a href="./W7X/beta008-free/input_xgrid.dat">MAKEGRID 输入</a></li>
+            <li><a href="./W7X/beta008-free/align_mgrid.py">BMW 网格转换</a></li>
+            <li><a href="./W7X/beta008-free/vessel_w7x_eim.dat">计算壁系数</a></li>
+          </ul>
+          <h4>结果文件</h4>
+          <ul>
+            <li><a href="./W7X/beta008-free/results/siesta_w7x_beta008_free_final.nc">终态 NetCDF</a></li>
+            <li><a href="./W7X/beta008-free/results/siesta_w7x_beta008_free.nc">最佳理想步 NetCDF</a></li>
+            <li><a href="./W7X/beta008-free/results/siesta_w7x_beta008_free_free.nc">自由边界初始磁场</a></li>
+            <li><a href="./W7X/beta008-free/results/run.log">运行日志</a></li>
+            <li><a href="./W7X/beta008-free/results/siesta_profiles.txt">SIESTA 剖面</a></li>
+            <li><a href="./W7X/beta008-free/results/siesta_profiles_pest.txt">PEST 剖面</a></li>
+            <li><a href="./W7X/beta008-free/results/force_history.csv">残差 CSV</a></li>
+            <li><a href="./W7X/beta008-free/results/diagnostics.json">诊断 JSON</a></li>
+            <li><a href="./W7X/beta008-free/SHA256SUMS">SHA-256 清单</a></li>
+          </ul>
+          <h4>诊断图</h4>
+          <ul>
+            <li><a href="./W7X/beta008-free/figures/force_history.png">力残差历史</a></li>
+            <li><a href="./W7X/beta008-free/figures/pressure.png">压力分布</a></li>
+            <li><a href="./W7X/beta008-free/figures/current.png">电流分布</a></li>
+            <li><a href="./W7X/beta008-free/figures/force_density.png">力密度分布</a></li>
+          </ul>
+        </article>
+        <article class="case" id="beta5-fixed">
+          <h3>约 5% 固定边界</h3>
+          <a class="case-readme" href="./W7X/beta5-fixed/README.md">算例与运行命令</a>
+          <h4>输入</h4>
+          <ul>
+            <li><a href="./W7X/beta5-fixed/siesta.jcf">SIESTA 输入</a></li>
+            <li><a href="./W7X/beta5-fixed/input.eim_demo_repro">VMEC 输入</a></li>
+            <li><a href="./W7X/beta5-fixed/wout_EIM_5_c_para.nc">VMEC WOUT</a></li>
+            <li><a href="./W7X/beta5-fixed/coils.w7x">线圈数据</a></li>
+            <li><a href="./W7X/beta5-fixed/input_xgrid.dat">MAKEGRID 输入</a></li>
+            <li><a href="./W7X/beta5-fixed/align_mgrid.py">BMW 网格转换</a></li>
+          </ul>
+          <h4>结果文件</h4>
+          <ul>
+            <li><a href="./W7X/beta5-fixed/results/siesta_w7x_eim_archive_fixed_final.nc">终态 NetCDF</a></li>
+            <li><a href="./W7X/beta5-fixed/results/siesta_w7x_eim_archive_fixed.nc">最佳理想步 NetCDF</a></li>
+            <li><a href="./W7X/beta5-fixed/results/run.log">运行日志</a></li>
+            <li><a href="./W7X/beta5-fixed/results/siesta_profiles.txt">SIESTA 剖面</a></li>
+            <li><a href="./W7X/beta5-fixed/results/siesta_profiles_pest.txt">PEST 剖面</a></li>
+            <li><a href="./W7X/beta5-fixed/results/force_history.csv">残差 CSV</a></li>
+            <li><a href="./W7X/beta5-fixed/results/diagnostics.json">诊断 JSON</a></li>
+            <li><a href="./W7X/beta5-fixed/SHA256SUMS">SHA-256 清单</a></li>
+          </ul>
+          <h4>诊断图</h4>
+          <ul>
+            <li><a href="./W7X/beta5-fixed/figures/force_history.png">力残差历史</a></li>
+            <li><a href="./W7X/beta5-fixed/figures/pressure.png">压力分布</a></li>
+            <li><a href="./W7X/beta5-fixed/figures/current.png">电流分布</a></li>
+            <li><a href="./W7X/beta5-fixed/figures/force_density.png">力密度分布</a></li>
+          </ul>
+        </article>
+        <article class="case" id="beta5-free">
+          <h3>约 5% 自由边界</h3>
+          <a class="case-readme" href="./W7X/beta5-free/README.md">算例与运行命令</a>
+          <h4>输入</h4>
+          <ul>
+            <li><a href="./W7X/beta5-free/siesta.jcf">SIESTA 输入</a></li>
+            <li><a href="./W7X/beta5-free/input.eim_demo_repro">VMEC 输入</a></li>
+            <li><a href="./W7X/beta5-free/wout_EIM_5_c_para.nc">VMEC WOUT</a></li>
+            <li><a href="./W7X/beta5-free/coils.w7x">线圈数据</a></li>
+            <li><a href="./W7X/beta5-free/input_xgrid.dat">MAKEGRID 输入</a></li>
+            <li><a href="./W7X/beta5-free/align_mgrid.py">BMW 网格转换</a></li>
+            <li><a href="./W7X/beta5-free/vessel_w7x_eim.dat">计算壁系数</a></li>
+          </ul>
+          <h4>结果文件</h4>
+          <ul>
+            <li><a href="./W7X/beta5-free/results/siesta_w7x_eim_archive_free_final.nc">终态 NetCDF</a></li>
+            <li><a href="./W7X/beta5-free/results/siesta_w7x_eim_archive_free.nc">最佳理想步 NetCDF</a></li>
+            <li><a href="./W7X/beta5-free/results/siesta_w7x_eim_archive_free_free.nc">自由边界初始磁场</a></li>
+            <li><a href="./W7X/beta5-free/results/run.log">运行日志</a></li>
+            <li><a href="./W7X/beta5-free/results/siesta_profiles.txt">SIESTA 剖面</a></li>
+            <li><a href="./W7X/beta5-free/results/siesta_profiles_pest.txt">PEST 剖面</a></li>
+            <li><a href="./W7X/beta5-free/results/force_history.csv">残差 CSV</a></li>
+            <li><a href="./W7X/beta5-free/results/diagnostics.json">诊断 JSON</a></li>
+            <li><a href="./W7X/beta5-free/SHA256SUMS">SHA-256 清单</a></li>
+          </ul>
+          <h4>诊断图</h4>
+          <ul>
+            <li><a href="./W7X/beta5-free/figures/force_history.png">力残差历史</a></li>
+            <li><a href="./W7X/beta5-free/figures/pressure.png">压力分布</a></li>
+            <li><a href="./W7X/beta5-free/figures/current.png">电流分布</a></li>
+            <li><a href="./W7X/beta5-free/figures/force_density.png">力密度分布</a></li>
+          </ul>
+        </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="inner">
+      <a href="./W7X/README.md">数据来源与算例索引</a><a href="./W7X/LICENSE-coils.txt">线圈许可</a><a href="../Source-Code/">SIESTA-lyh 程序手册</a>
+    </div>
+  </footer>
+</body>
+</html>
